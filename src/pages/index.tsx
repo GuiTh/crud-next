@@ -32,10 +32,11 @@ export default function Home() {
 
           <Botao cor="gray" className="mb-4">Novo Cliente</Botao>
         </div>
-        <Tabela clientes={clientes}
+        {/* <Tabela clientes={clientes}
          clienteSelecionado={clienteSelecionado}
-         clienteExcluido={clienteExcluido}></Tabela>
+         clienteExcluido={clienteExcluido}></Tabela> */}
 
+        <Formulario cliente={clientes[2]}></Formulario>
       </Layout>
     </div>
   )

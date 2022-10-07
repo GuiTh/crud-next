@@ -7,11 +7,8 @@ module.exports = {
   safeList:[
     /^bg-/,
     /^to-/,
-<<<<<<< HEAD
-    /^from-/,
-=======
     /^from-/
->>>>>>> e8f7f47ab9cd89547edccaaff7023d70ff9e7f3c
+
   ]
   },
   darkmode: false,
