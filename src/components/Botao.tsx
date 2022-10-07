@@ -1,6 +1,8 @@
 interface BotaoProps{
+
     cor?: 'green' | 'blue' | 'gray'
     children: any
+
     className?: string
 }
 
@@ -14,6 +16,7 @@ export default function Botao(props: BotaoProps){
         `}>
             {/* props.children sao as informaçoes que vao dentro da tag */}
             {props.children}
+
         </button>
     )
 }

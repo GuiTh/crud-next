@@ -20,7 +20,6 @@ export default function Tabela(props: TabelaProps){
             <th className="text-left p-4">Código</th>
             <th className="text-left p-4">Nome</th>
             <th className="text-left p-4">Idade</th>
-            {/* só vai aparecer os botoes de eidtar e excluir se as acoes forem permitidas pro usuario */}
             {exibirAcoes ? <th className=" p-4">Ações</th> : false}
             
         </tr>
@@ -29,26 +28,25 @@ export default function Tabela(props: TabelaProps){
 
     function renderizarAcoes(cliente: Cliente){
         return(
-            <td className='flex justify-center'>
+
+            <td className='flex '>
                 {props.clienteSelecionado ? (
                 <button onClick={() => props.clienteSelecionado?.(cliente)} className={`
-                    flex justify-center items-center
-                    text-green-600 rounded-full
-                    hover:bg-purple-50 p-2 m-1
-                    `}>
-                        {IconeEdicao}
-                </button>
-                ) : false}
-                {props.clienteExcluido ? (
-                    //essas funcopes sao funcionarao se o cliente for diferente de nulo
-                <button onClick={() => props.clienteExcluido?.(cliente)} className={`
-                    flex justify-center items-center
-                    text-red-600 rounded-full
-                    hover:bg-purple-50 p-2 m-1`
-                    }>
-                        {IconeLixo}
+                flex justify-center items-center
+                text-green-600 rounded-full
+                hover:bg-purple-50 p-2 m-1
+                `}>
+                    {IconeEdicao}
                 </button>
                 ): false}
+                {props.clienteExcluido ? (
+                <button onClick={() => props.clienteExcluido?.(cliente)} className={`
+                flex justify-center items-center
+                text-red-600 rounded-full
+                hover:bg-purple-50 p-2 m-1`}>
+                    {IconeLixo}
+                </button>
+                ):false}
             </td>
         )
     }
