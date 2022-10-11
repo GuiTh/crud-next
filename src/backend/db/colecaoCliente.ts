@@ -4,8 +4,8 @@ import firebase from "../config";
 
 export default class ColecaoCliente implements ClienteRepositorio {
 
-    //coverte o cliente para o firestore
-    conversor ={
+    //coverte o cliente para objeto
+    #conversor ={
         toFirestore(cliente:Cliente){
             return{
                 nome: cliente.nome,
@@ -20,12 +20,28 @@ export default class ColecaoCliente implements ClienteRepositorio {
     }
 
     async salvar(cliente: Cliente): Promise<Cliente>{
+        if(cliente?.id){
+            //dois cenarios de inclusao, se o id do cliente JA estiver setado voce altera ele
+            await this.colecao().doc(cliente.id).set(cliente)
+            return cliente
+        }else{
+            //caso o id n esteja setado, esse codigo seta
+            const docRef = await this.colecao().add(cliente)
+            const doc = await docRef.get()
+            return doc.data()
+        }
         return null
     }
     async excluir(cliente: Cliente): Promise<void>{
-        return null
+        return this.colecao().doc(cliente.id).delete()
     }
     async obterTodos(cliente: Cliente): Promise<Cliente[]>{
-        return null
+         const query = await this.colecao().get()
+         return query.docs.map(doc => doc.data()) ?? []
+    }
+    private colecao(){
+        return firebase.firestore()
+        .collection('clientes')
+        .withConverter(this.#conversor)
     }
 }
