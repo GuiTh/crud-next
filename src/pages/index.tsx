@@ -3,6 +3,8 @@ import Layout from "../components/Layout"
 import Tabela from "../components/Tabela"
 import Cliente from "../core/Cliente"
 import Formulario from "../components/Formulario"
+import {useState} from  'react'
+
 
 export default function Home() {
 
@@ -15,12 +17,13 @@ export default function Home() {
 
 
   function clienteSelecionado(cliente:Cliente){
-    console.log(cliente.nome)
+    setCliente(cliente)
   }
   function clienteExcluido(cliente: Cliente){
     console.log(`Excluir...${cliente.nome}`)
   }
-
+  const [cliente, setCliente] = useState<Cliente>(Cliente.vazio())
+  const [visivel, setVisivel] = useState<'tabela' | 'form'> ('tabela')
 
   return (
     <div className={`
@@ -28,13 +31,16 @@ export default function Home() {
     bg-gradient-to-r from-blue-500 to-purple-500 text-white
     `}>
       <Layout titulo="Cadastro Simples">
+        <>
         <div className="flex justify-end">
 
           <Botao cor="gray" className="mb-4">Novo Cliente</Botao>
         </div>
-        {/* <Tabela clientes={clientes}
+        <Tabela clientes={clientes}
          clienteSelecionado={clienteSelecionado}
-         clienteExcluido={clienteExcluido}></Tabela> */}
+         clienteExcluido={clienteExcluido}
+         />
+         </>
 
         <Formulario cliente={clientes[2]}></Formulario>
       </Layout>
