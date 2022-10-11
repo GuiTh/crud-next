@@ -23,10 +23,10 @@ export default function Home() {
   function clienteExcluido(cliente: Cliente){
     console.log(`Excluir...${cliente.nome}`)
   }
-  function salvarCliente(cliente:Cliente){
+  function salvarCliente(cliente: Cliente){
     setVisivel('tabela')
   }
-  function novoCliente(cliente:Cliente){
+  function novoCliente(cliente: Cliente){
     setCliente(Cliente.vazio())
     setVisivel('form')
   }
@@ -46,7 +46,7 @@ export default function Home() {
           <div className="flex justify-end">
 
             <Botao cor="gray" className="mb-4" 
-            onClick = {novoCliente}>
+            onClick={novoCliente}>
               Novo Cliente
               </Botao>
 
