@@ -2,13 +2,13 @@ import Cliente from '../core/Cliente'
 import ClienteRepositorio from '../core/ClienteRepositorio'
 import { useState, useEffect } from 'react'
 import useTabelaOuForm from './useTabelaOuForm'
-import ColecaoCliente from '../backend/db/ColecaoCliente'
+import colecaoCliente from '../backend/db/ColecaoCliente'
 
 //ESSE HOOK TRABALHA COM AS FUNCOES DE ALTERAR O FORMULARIO
 
 export default function useCliente(){
 
-    const repo: ClienteRepositorio = new ColecaoCliente()
+    const repo: ClienteRepositorio = new colecaoCliente()
     const { tabelaVisivel, formularioVisivel, exibirFormulario, exibirTabela} = useTabelaOuForm()
     const [cliente, setCliente] = useState<Cliente>(Cliente.vazio())
     const [clientes, setClientes] = useState<Cliente[]>()
