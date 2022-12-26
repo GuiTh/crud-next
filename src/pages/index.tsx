@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import ClienteRepositorio from "../core/ClienteRepositorio"
 import ColecaoCliente from "../backend/db/ColecaoCliente"
 import useCliente from '../hooks/useClientes'
+import IndexHead from '../components/IndexHead'
 
 export default function Home() {
 
@@ -25,6 +26,8 @@ export default function Home() {
     flex justify-center items-center h-screen 
     bg-gradient-to-r from-blue-500 to-purple-500 text-white
     `}>
+      <IndexHead/>
+
       <Layout titulo="Cadastro Simples">
         {tabelaVisivel ? (
           <>
